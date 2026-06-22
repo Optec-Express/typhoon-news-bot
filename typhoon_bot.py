@@ -478,12 +478,12 @@ def main():
             print(f"  ⚠️  JP: {storm['name']} → {', '.join(a['code'] for a, _ in jp_hit)}")
 
     now       = datetime.now()
-    is_friday = now.weekday() == 4   # 0=周一 … 4=周五
-    is_morning = now.hour < 12
+    is_friday = now.weekday() == 4          # 0=周一 … 4=周五
+    is_weekly_slot = is_friday and now.hour == 9  # 09:40 UTC = 18:40 JST
 
-    # 无台风：仅周五上午发一次系统确认，其余全部静默
+    # 无台风：仅周五 18:40 JST 发一次系统确认，其余全部静默
     if not cn_alerts and not jp_alerts:
-        if is_friday and is_morning:
+        if is_weekly_slot:
             print("📅 周五系统确认推送...")
             _send_weekly_ok(cfg)
             log_run("周五系统确认")
