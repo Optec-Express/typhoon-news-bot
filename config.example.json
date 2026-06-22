@@ -1,0 +1,15 @@
+{
+  "webhooks": {
+    "dept-os-cn":        "https://hooks.slack.com/services/YOUR/WEBHOOK/URL",
+    "dept-japandesk-cn": "https://hooks.slack.com/services/YOUR/WEBHOOK/URL",
+    "dept-tcc-jp":       "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+  },
+  "webhook_lang": {
+    "dept-os-cn":        "zh",
+    "dept-japandesk-cn": "zh",
+    "dept-tcc-jp":       "ja"
+  },
+  "webhook_sections": {
+    "dept-tcc-jp": ["jp"]
+  }
+}
