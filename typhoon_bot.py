@@ -427,16 +427,16 @@ def post_slack(webhook_url, payload):
 
 
 def log_run(note):
-    LOGFILE.parent.mkdir(exist_ok=True)
-    ts = datetime.now().strftime("%Y-%m-%d %H:%M")
     try:
+        LOGFILE.parent.mkdir(exist_ok=True)
+        ts = datetime.now().strftime("%Y-%m-%d %H:%M")
         existing = LOGFILE.read_text(encoding="utf-8") if LOGFILE.exists() else ""
         marker   = "| --- | --- | --- | --- | --- |\n"
         new_row  = f"| {ts} | — | — | — | {note} |\n"
         updated  = existing.replace(marker, marker + new_row, 1) if marker in existing else existing + new_row
         LOGFILE.write_text(updated, encoding="utf-8")
-    except Exception as e:
-        print(f"  [log error] {e}")
+    except Exception:
+        pass
 
 
 # ── 主流程 ────────────────────────────────────────────────────────────────
