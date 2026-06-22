@@ -11,7 +11,10 @@ import json, re, sys, math, urllib.request
 from datetime import datetime
 from pathlib import Path
 
-sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except AttributeError:
+    pass
 
 ROOT    = Path(__file__).parent
 CONFIG  = ROOT / "config.json"
